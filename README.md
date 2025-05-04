@@ -54,7 +54,6 @@ Este proyecto es una aplicación web de inventario de productos desarrollada com
    npm install
 3.Ejecuta el servidor de desarrollo con:
 
-    ```bash
     npm run dev
 📂 Estructura del Proyecto
 Backend (Spring Boot)

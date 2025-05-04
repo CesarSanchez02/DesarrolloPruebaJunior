@@ -52,52 +52,52 @@ Este proyecto es una aplicación web de inventario de productos desarrollada com
 2. Instala las dependencias con:
    ```bash
    npm install
-3.Ejecuta el servidor de desarrollo con:
-
-    npm run dev
-📂 Estructura del Proyecto
+3. Ejecuta el servidor de desarrollo con:
+   ```bash
+   npm install
+### 📂 Estructura del Proyecto
 Backend (Spring Boot)
-src/main/java/com/example/producto_inventario: Contiene el código fuente del backend, incluyendo las entidades, controladores y servicios de Spring Boot.
+`src/main/java/com/example/producto_inventario:` Contiene el código fuente del backend, incluyendo las entidades, controladores y servicios de Spring Boot.
 
-src/main/resources/application.properties: Configuración de la base de datos H2 y otras propiedades del backend.
+`src/main/resources/application.properties:` Configuración de la base de datos H2 y otras propiedades del backend.
 
-Frontend (React)
-frontend/package.json: Contiene las dependencias y scripts necesarios para el frontend, incluyendo React, Reactstrap, y SweetAlert2.
+### Frontend (React)
+`frontend/package.json:` Contiene las dependencias y scripts necesarios para el frontend, incluyendo React, Reactstrap, y SweetAlert2.
 
-frontend/src/: Contiene los componentes y la lógica del frontend desarrollada con React.
+`frontend/src/:` Contiene los componentes y la lógica del frontend desarrollada con React.
 
-frontend/vite.config.ts: Configuración del bundler Vite.
+`frontend/vite.config.ts:` Configuración del bundler Vite.
 
-🔧 Dependencias principales
+### 🔧 Dependencias principales
 Backend (pom.xml)
-spring-boot-starter-data-jpa: Para el manejo de la base de datos y JPA.
+`spring-boot-starter-data-jpa:` Para el manejo de la base de datos y JPA.
 
-spring-boot-starter-web: Para exponer la API REST.
+`spring-boot-starter-web:` Para exponer la API REST.
 
-spring-boot-starter-validation: Para validaciones de formularios.
+`spring-boot-starter-validation:` Para validaciones de formularios.
 
-h2: Base de datos en memoria para pruebas.
+`h2: `Base de datos en memoria para pruebas.
 
-spring-boot-devtools: Para mejorar el ciclo de desarrollo.
+`spring-boot-devtools:` Para mejorar el ciclo de desarrollo.
 
-Frontend (package.json)
-axios: Para realizar solicitudes HTTP al backend.
+### Frontend (package.json)
+`axios:` Para realizar solicitudes HTTP al backend.
 
-bootstrap: Para diseño responsive utilizando Bootstrap 5.
+`bootstrap:` Para diseño responsive utilizando Bootstrap 5.
 
-react: Framework para construir la interfaz de usuario.
+`react:` Framework para construir la interfaz de usuario.
 
-reactstrap: Componentes de React basados en Bootstrap.
+`reactstrap:` Componentes de React basados en Bootstrap.
 
-vite: Bundler y servidor de desarrollo.
+`vite:` Bundler y servidor de desarrollo.
 
-typescript: Para el desarrollo en TypeScript.
+`typescript:` Para el desarrollo en TypeScript.
 
-jest: Herramienta para pruebas unitarias.
+`jest:` Herramienta para pruebas unitarias.
 
-🔄 Contribución
+### 🔄 Contribución
 Si deseas contribuir a este proyecto, por favor abre un pull request con tus cambios y mejoras. ¡Toda ayuda es bienvenida!
 
-📄 Licencia
+### 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT.

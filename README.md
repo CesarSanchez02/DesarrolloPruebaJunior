@@ -52,15 +52,12 @@ Este proyecto es una aplicación web de inventario de productos desarrollada com
 2. Instala las dependencias con:
    ```bash
    npm install
-3. Ejecuta el servidor de desarrollo con:
+3.Ejecuta el servidor de desarrollo con:
+
     ```bash
-   npm run dev
-4. El frontend estará disponible en el siguiente enlace:
-   ```bash
-   http://localhost:5173
-   
-###📂 Estructura del Proyecto
-**Backend (Spring Boot)**
+    npm run dev
+📂 Estructura del Proyecto
+Backend (Spring Boot)
 src/main/java/com/example/producto_inventario: Contiene el código fuente del backend, incluyendo las entidades, controladores y servicios de Spring Boot.
 
 src/main/resources/application.properties: Configuración de la base de datos H2 y otras propiedades del backend.
@@ -72,8 +69,8 @@ frontend/src/: Contiene los componentes y la lógica del frontend desarrollada c
 
 frontend/vite.config.ts: Configuración del bundler Vite.
 
-##🔧 Dependencias principales
-**Backend (pom.xml)**
+🔧 Dependencias principales
+Backend (pom.xml)
 spring-boot-starter-data-jpa: Para el manejo de la base de datos y JPA.
 
 spring-boot-starter-web: Para exponer la API REST.
@@ -84,7 +81,7 @@ h2: Base de datos en memoria para pruebas.
 
 spring-boot-devtools: Para mejorar el ciclo de desarrollo.
 
-**Frontend (package.json)**
+Frontend (package.json)
 axios: Para realizar solicitudes HTTP al backend.
 
 bootstrap: Para diseño responsive utilizando Bootstrap 5.
@@ -99,8 +96,9 @@ typescript: Para el desarrollo en TypeScript.
 
 jest: Herramienta para pruebas unitarias.
 
-##🔄 Contribución
+🔄 Contribución
 Si deseas contribuir a este proyecto, por favor abre un pull request con tus cambios y mejoras. ¡Toda ayuda es bienvenida!
 
-##📄 Licencia
+📄 Licencia
+
 Este proyecto está bajo la Licencia MIT.

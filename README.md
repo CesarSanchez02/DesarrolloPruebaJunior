@@ -54,7 +54,10 @@ Este proyecto es una aplicación web de inventario de productos desarrollada com
    npm install
 3. Ejecuta el servidor de desarrollo con:
    ```bash
-   npm install
+   npm run dev
+4. El frontend estará disponible en el siguiente enlace:
+   ```bash
+   http://localhost:5173
 ### 📂 Estructura del Proyecto
 Backend (Spring Boot)
 `src/main/java/com/example/producto_inventario:` Contiene el código fuente del backend, incluyendo las entidades, controladores y servicios de Spring Boot.

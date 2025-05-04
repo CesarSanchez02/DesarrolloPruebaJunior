@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+# 🛠️ Inventario de Productos - Kata Beginner Challenge 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación web de inventario de productos desarrollada como parte del reto **"Kata Beginner - Challenge 2 | Product Inventory"**. Permite **listar, agregar, editar y eliminar productos**, con validaciones tanto en frontend como backend.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+### 🔧 Backend
+- **Java 24**
+- **Spring Boot 3.4.5**
+  - Spring Web
+  - Spring Data JPA
+  - Spring Validation
+  - H2 Database
+- **JUnit** para pruebas unitarias
+- Proyecto inicializado con **Spring Initializr**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 💻 Frontend
+- **React**
+- **Reactstrap** para estilos con Bootstrap
+- **SweetAlert2** para mensajes de confirmación y alertas
+- **Jest** para pruebas unitarias
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 🛠️ Herramientas de desarrollo
+- **Visual Studio Code** como editor principal
+- **Postman** para probar la API REST
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🗃️ Funcionalidades principales
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- ✅ Listar todos los productos
+- ➕ Agregar un nuevo producto
+- ✏️ Editar un producto existente
+- ❌ Eliminar un producto
+- ✅ Validaciones de formulario (campos requeridos, restricciones)
+- 💾 Persistencia en base de datos H2 en memoria
+
+---
+
+## ⚙️ Cómo ejecutar el proyecto
+
+### 🔙 Backend
+
+1. Clona el repositorio.
+2. Abre la carpeta del proyecto en Visual Studio Code o tu IDE favorito.
+3. Ejecuta la clase `ProductoInventarioApplication.java` (con anotación `@SpringBootApplication`).
+4. Accede a la consola H2 si lo deseas:  
+   - URL: `http://localhost:8080/h2-console`
+   - JDBC URL: `jdbc:h2:mem:testdb`
+5. La API quedará expuesta en: `http://localhost:8080/api/productos`
+
+### 🔜 Frontend
+
+1. Navega a la carpeta del frontend (`cd frontend` si está en una carpeta separada).
+2. Instala dependencias:
+   ```bash
+   npm install

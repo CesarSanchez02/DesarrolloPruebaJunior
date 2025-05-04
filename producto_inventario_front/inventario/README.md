@@ -55,5 +55,5 @@ Este proyecto es una aplicación web de inventario de productos desarrollada com
 
 1. Navega a la carpeta del frontend (`cd frontend` si está en una carpeta separada).
 2. Instala dependencias:
-   ```bash
+   ```bashñ
    npm install

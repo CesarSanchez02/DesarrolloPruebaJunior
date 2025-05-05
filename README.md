@@ -98,8 +98,28 @@ Backend (pom.xml)
 
 `jest:` Herramienta para pruebas unitarias.
 
-### 🔄 Contribución
-Si deseas contribuir a este proyecto, por favor abre un pull request con tus cambios y mejoras. ¡Toda ayuda es bienvenida!
+## 🛠️ Despliegue en AWS
+
+### **Frontend** - Amazon S3 y CloudFront
+1. **Amazon S3**:
+   - La aplicación frontend de React se hospeda en **Amazon S3** como un sitio web estático. 
+   - Los archivos de la aplicación React se suben al bucket de S3 y se sirven de manera rápida y eficiente a los usuarios.
+
+2. **Amazon CloudFront**:
+   - **CloudFront** se utiliza para distribuir el contenido de manera global, mejorando la velocidad de carga de la aplicación.
+   - El tráfico de los usuarios se redirige automáticamente al servidor más cercano, mejorando la experiencia del usuario.
+
+### **Backend** - AWS Elastic Beanstalk o EC2
+1. **Elastic Beanstalk**:
+   - La API REST de Spring Boot se despliega en **AWS Elastic Beanstalk**, donde la infraestructura, como el balanceo de carga y la escalabilidad, se gestiona automáticamente.
+   - Elastic Beanstalk facilita el despliegue de aplicaciones Java sin necesidad de administrar servidores directamente.
+
+2. **EC2 (Opcional)**:
+   - Si prefieres tener control total sobre el servidor, puedes desplegar la aplicación Spring Boot en una instancia EC2.
+   - Instala Java, sube el archivo `.jar` de la aplicación y ejecútalo en EC2.
+
+3. **Base de Datos**:
+   - Si deseas usar una base de datos persistente, puedes configurar **Amazon RDS** para usar una base de datos como MySQL o PostgreSQL, y conectar tu aplicación Spring Boot a RDS para manejar la persistencia de datos.
 
 ### 📄 Licencia
 

@@ -58,10 +58,11 @@ export const NuevoProducto = () => {
             return;
         }
 
-        if (!stock || Number(stock) < 0) {
-            Swal.fire("Error", "El stock no puede ser negativo", "error");
+        if (stock === "" || Number(stock) < 0) {
+            Swal.fire("Error", "El stock debe ser mayor o igual que 0", "error");
             return;
         }
+        
 
         if (!categoria) {
             Swal.fire("Error", "Debes seleccionar una categoría", "error");
@@ -78,6 +79,7 @@ export const NuevoProducto = () => {
         try {
             await axios.post(`${appsettings.apiUrl}/productos`, nuevoProducto);
             Swal.fire("Éxito", "Producto creado exitosamente", "success");
+            navigate("/");
         } catch (error) {
             console.error("Error al crear el producto", error);
             Swal.fire("Error", "No se pudo crear el producto", "error");
@@ -104,7 +106,7 @@ export const NuevoProducto = () => {
 
                         <FormGroup>
                             <Label for="stock">Stock</Label>
-                            <Input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} min="0"/>
+                            <Input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} min=""/>
                         </FormGroup>
 
                         <FormGroup>

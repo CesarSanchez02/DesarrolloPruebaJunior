@@ -16,7 +16,7 @@ export const EditarProducto = () => {
     const [stock, setStock] = useState("");
     const [categoria, setCategoria] = useState<ICategoria | null>(null);
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
-    const [originalNombre, setOriginalNombre] = useState("");
+    const [originalNombre] = useState("");
 
     useEffect(() => {
         const fetchCategorias = async () => {

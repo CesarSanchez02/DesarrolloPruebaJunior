@@ -2,14 +2,13 @@ package com.example.producto_inventario.service;
 
 import com.example.producto_inventario.model.Categoria;
 import com.example.producto_inventario.repositiry.CategoriaRepository;
-import jakarta.persistence.SequenceGenerator;
+import com.example.producto_inventario.repositiry.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,12 +22,15 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
+    @Autowired
+    private ProductoRepository productoRepository; // Asegúrate de tener este repositorio para verificar la asociación
+
     public List<Categoria> getAllCategorias(){
         return categoriaRepository.findAll();
     }
 
-    public ResponseEntity<Object> createCategoria(@RequestBody Categoria categoria){
-        Optional<Categoria> res= categoriaRepository.findCategoriaByNombre(categoria.getNombre());
+    public ResponseEntity<Object> createCategoria(Categoria categoria){
+        Optional<Categoria> res = categoriaRepository.findCategoriaByNombre(categoria.getNombre());
 
         datos = new HashMap<>();
 
@@ -42,7 +44,6 @@ public class CategoriaService {
         datos.put("message", "Categoría guardada con éxito");
         datos.put("data", categoria);
         return new ResponseEntity<>(datos, HttpStatus.CREATED);
-
     }
 
     public ResponseEntity<Object> getCategoria(Long id) {
@@ -63,7 +64,7 @@ public class CategoriaService {
 
         if(existe.isEmpty()){
             datos.put("error", true);
-            datos.put("message", "Categoria no encontrado");
+            datos.put("message", "Categoria no encontrada");
             return new ResponseEntity<>(datos, HttpStatus.NOT_FOUND);
         }
 
@@ -71,7 +72,7 @@ public class CategoriaService {
 
         if (catExist.isPresent() && !catExist.get().getIdCategoria().equals(id)){
             datos.put("error", true);
-            datos.put("message", "Ya existe una categoria con ese nombre");
+            datos.put("message", "Ya existe una categoría con ese nombre");
             return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
         }
 
@@ -82,21 +83,25 @@ public class CategoriaService {
         return new ResponseEntity<>(datos, HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> deleteCategoria(Long id){
-        datos = new HashMap<>();
+    public ResponseEntity<Object> deleteCategoria(Long id) {
+        Map<String, Object> datos = new HashMap<>();
 
         Optional<Categoria> categoriaEliminada = categoriaRepository.findById(id);
         if (categoriaEliminada.isEmpty()) {
-            datos.put("error", true);
             datos.put("message", "No existe una categoría con ese id");
-            return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(datos, HttpStatus.BAD_REQUEST);
         }
 
-        categoriaRepository.deleteById(id);
+        // Verificamos si la categoría está asociada a algún producto
+        if (productoRepository.existsByCategoria(categoriaEliminada.get())) {
+            datos.put("message", "Elimina primero el producto asociado");
+            return new ResponseEntity<>(datos, HttpStatus.BAD_REQUEST); // Devolver solo el mensaje
+        }
 
+        // Si no está asociada a ningún producto, eliminamos la categoría
+        categoriaRepository.deleteById(id);
         datos.put("message", "Categoría eliminada con éxito");
-        datos.put("data", categoriaEliminada);
-        return new ResponseEntity<>(datos, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(datos, HttpStatus.ACCEPTED); // Mensaje exitoso
     }
 
     @GetMapping("/{idCategoria}")
@@ -107,6 +112,4 @@ public class CategoriaService {
         }
         return new ResponseEntity<>(categoria.get(), HttpStatus.OK);
     }
-
-
 }

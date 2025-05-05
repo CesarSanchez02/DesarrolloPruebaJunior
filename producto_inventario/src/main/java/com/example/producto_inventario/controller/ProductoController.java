@@ -13,7 +13,6 @@ import java.util.List;
 @RequestMapping(path = "api/productos")
 public class ProductoController {
 
-
     private final ProductoService productoService;
 
     @Autowired

@@ -43,8 +43,8 @@ Este proyecto es una aplicación web de inventario de productos desarrollada com
 2. Abre la carpeta del proyecto en **Visual Studio Code** o tu IDE favorito.
 3. Ejecuta la clase **`ProductoInventarioApplication.java`** (con la anotación `@SpringBootApplication`).
 4. Si deseas, puedes acceder a la consola H2 para ver la base de datos en memoria:
-   - **URL**: `http://localhost:8080/h2-console`
-   - **JDBC URL**: `jdbc:h2:mem:testdb`
+   - **URL**: `http://localhost:8080/h2-ui`
+   - **JDBC URL**: `jdbc:h2:mem:inventario`
 5. La API quedará expuesta en: `http://localhost:8080/api/productos`
 
 ### 🔜 Frontend

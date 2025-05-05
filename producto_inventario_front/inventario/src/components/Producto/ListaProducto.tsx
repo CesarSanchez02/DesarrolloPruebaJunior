@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { IProducto } from "../../interface/IProducto";
 import { Button, Table, Card, CardBody, CardHeader } from "reactstrap";
@@ -29,7 +29,7 @@ export const ListaProducto = () => {
             confirmButtonText: "Sí, eliminar",
             cancelButtonText: "Cancelar",
         });
-    
+
         if (confirm.isConfirmed) {
             try {
                 await axios.delete(`${appsettings.apiUrl}/productos/${id}`);
@@ -53,7 +53,6 @@ export const ListaProducto = () => {
 
     return (
         <div className="container mt-4">
-            {/* Card principal */}
             <Card className="shadow-sm">
                 <CardHeader className="d-flex justify-content-between align-items-center">
                     <h4 className="mb-0 font-weight-bold">Lista de Productos</h4>

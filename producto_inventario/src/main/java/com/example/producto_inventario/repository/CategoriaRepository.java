@@ -1,4 +1,4 @@
-package com.example.producto_inventario.repositiry;
+package com.example.producto_inventario.repository;
 
 import com.example.producto_inventario.model.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;

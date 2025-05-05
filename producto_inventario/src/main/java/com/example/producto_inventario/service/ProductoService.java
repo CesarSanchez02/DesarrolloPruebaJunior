@@ -2,8 +2,8 @@ package com.example.producto_inventario.service;
 
 import com.example.producto_inventario.model.Categoria;
 import com.example.producto_inventario.model.Producto;
-import com.example.producto_inventario.repositiry.CategoriaRepository;
-import com.example.producto_inventario.repositiry.ProductoRepository;
+import com.example.producto_inventario.repository.CategoriaRepository;
+import com.example.producto_inventario.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

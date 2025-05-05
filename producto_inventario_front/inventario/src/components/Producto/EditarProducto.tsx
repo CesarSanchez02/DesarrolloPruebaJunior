@@ -16,7 +16,7 @@ export const EditarProducto = () => {
     const [stock, setStock] = useState("");
     const [categoria, setCategoria] = useState<ICategoria | null>(null);
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
-    const [originalNombre] = useState("");
+    const [originalNombre, setOriginalNombre] = useState("");
 
     useEffect(() => {
         const fetchCategorias = async () => {
@@ -37,6 +37,7 @@ export const EditarProducto = () => {
                 setPrecio(producto.precio.toString());
                 setStock(producto.stock.toString());
                 setCategoria(producto.categoria || null);
+                setOriginalNombre(producto.nombre);  // Asignar nombre original
             } catch (error) {
                 console.error("Error al cargar producto", error);
                 Swal.fire("Error", "No se pudo cargar el producto", "error");
@@ -72,7 +73,6 @@ export const EditarProducto = () => {
             }
         }
         
-    
         if (!precio || Number(precio) <= 0) {
             Swal.fire("Error", "El precio debe ser mayor que 0", "error");
             return;

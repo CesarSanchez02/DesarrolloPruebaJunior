@@ -1,30 +1,29 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { IProducto } from "../../interface/IProducto";
-import { Button, Form, FormGroup, Label, Input,Card, CardBody, CardTitle} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Card, CardBody, CardTitle } from "reactstrap";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { appsettings } from "../../settings/appsetting";
+import { IProducto } from "../../interface/IProducto";
 import { ICategoria } from "../../interface/ICategoria";
 
-export const NuevoProducto = () => {
+export const NuevoProducto: React.FC = () => {
     const [nombre, setNombre] = useState<string>("");
     const [precio, setPrecio] = useState<string>("");
     const [stock, setStock] = useState<string>("");
     const [categoria, setCategoria] = useState<ICategoria | null>(null);
-    const [categorias, setCategorias] = useState<ICategoria[]>([]); 
+    const [categorias, setCategorias] = useState<ICategoria[]>([]);
     const navigate = useNavigate();
-
 
     useEffect(() => {
         const obtenerCategorias = async () => {
-        try {
-            const response = await axios.get<ICategoria[]>(`${appsettings.apiUrl}/categorias`);
-            setCategorias(response.data);
-        } catch (error) {
-            console.error("Error al obtener categorías", error);
-            Swal.fire("Error", "No se pudieron cargar las categorías", "error");
-        }
+            try {
+                const response = await axios.get<ICategoria[]>(`${appsettings.apiUrl}/categorias`);
+                setCategorias(response.data);
+            } catch (error) {
+                console.error("Error al obtener categorías", error);
+                Swal.fire("Error", "No se pudieron cargar las categorías", "error");
+            }
         };
         obtenerCategorias();
     }, []);
@@ -32,7 +31,7 @@ export const NuevoProducto = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-
+        // Validación de campos
         if (!nombre.trim()) {
             Swal.fire("Error", "El nombre del producto es obligatorio", "error");
             return;
@@ -62,13 +61,13 @@ export const NuevoProducto = () => {
             Swal.fire("Error", "El stock debe ser mayor o igual que 0", "error");
             return;
         }
-        
 
         if (!categoria) {
             Swal.fire("Error", "Debes seleccionar una categoría", "error");
             return;
         }
 
+        // Creación del nuevo producto
         const nuevoProducto: IProducto = {
             nombre,
             precio: Number(precio),
@@ -91,39 +90,50 @@ export const NuevoProducto = () => {
             <Card style={{ width: "100%", maxWidth: "600px" }}>
                 <CardBody>
                     <CardTitle tag="h3" className="mb-4 text-center">
-                    Nuevo Producto
+                        Nuevo Producto
                     </CardTitle>
                     <Form onSubmit={handleSubmit}>
                         <FormGroup>
                             <Label for="nombre">Nombre</Label>
-                            <Input type="text"id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                            <Input type="text" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
                         </FormGroup>
 
                         <FormGroup>
                             <Label for="precio">Precio</Label>
-                            <Input type="number"id="precio" value={precio}onChange={(e) => setPrecio(e.target.value)} min=""/>
+                            <Input type="number" id="precio" value={precio} onChange={(e) => setPrecio(e.target.value)} min="" />
                         </FormGroup>
 
                         <FormGroup>
                             <Label for="stock">Stock</Label>
-                            <Input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} min=""/>
+                            <Input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} min="" />
                         </FormGroup>
 
                         <FormGroup>
                             <Label for="categoria">Categoría</Label>
-                            <Input type="select" id="categoria" value={categoria?.idCategoria || ""} onChange={(e) => setCategoria(categorias.find(cat => cat.idCategoria === Number(e.target.value)) || null)}>
+                            <Input
+                                type="select"
+                                id="categoria"
+                                value={categoria?.idCategoria || ""}
+                                onChange={(e) =>
+                                    setCategoria(categorias.find((cat) => cat.idCategoria === Number(e.target.value)) || null)
+                                }
+                            >
                                 <option value="">Selecciona una categoría</option>
                                 {categorias.map((cat) => (
-                                <option key={cat.idCategoria} value={cat.idCategoria}>
-                                    {cat.nombre}
-                                </option>
+                                    <option key={cat.idCategoria} value={cat.idCategoria}>
+                                        {cat.nombre}
+                                    </option>
                                 ))}
                             </Input>
                         </FormGroup>
 
                         <div className="d-flex justify-content-end gap-3 mt-4">
-                            <Button color="success" type="submit">Crear Producto</Button>
-                            <Button color="secondary" type="button" onClick={() => navigate("/")}>Volver</Button>
+                            <Button color="success" type="submit">
+                                Crear Producto
+                            </Button>
+                            <Button color="secondary" type="button" onClick={() => navigate("/")}>
+                                Volver
+                            </Button>
                         </div>
                     </Form>
                 </CardBody>

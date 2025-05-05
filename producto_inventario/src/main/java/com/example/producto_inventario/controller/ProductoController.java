@@ -1,7 +1,7 @@
 package com.example.producto_inventario.controller;
 
-import com.example.producto_inventario.service.ProductoService;
 import com.example.producto_inventario.model.Producto;
+import com.example.producto_inventario.service.ProductoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-import React from "react";
+
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import { ListaCategoria } from "./components/Categoria/ListaCategoria"
 import { ListaProducto } from "./components/Producto/ListaProducto"

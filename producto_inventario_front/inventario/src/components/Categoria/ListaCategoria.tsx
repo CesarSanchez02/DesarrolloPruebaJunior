@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { ICategoria } from "../../interface/ICategoria";
 import { Button, Table, Card, CardBody, CardHeader } from "reactstrap";
@@ -51,10 +51,6 @@ export const ListaCategoria = () => {
             }
         }
     };
-    
-    
-    
-    
 
     useEffect(() => {
         obtenerCategorias();

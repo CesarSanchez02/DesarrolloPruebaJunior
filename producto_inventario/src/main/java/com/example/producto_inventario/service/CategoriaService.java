@@ -23,18 +23,17 @@ public class CategoriaService {
     private CategoriaRepository categoriaRepository;
 
     @Autowired
-    private ProductoRepository productoRepository; // Asegúrate de tener este repositorio para verificar la asociación
-
+    private ProductoRepository productoRepository;
     public List<Categoria> getAllCategorias(){
         return categoriaRepository.findAll();
     }
 
     public ResponseEntity<Object> createCategoria(Categoria categoria){
-        Optional<Categoria> res = categoriaRepository.findCategoriaByNombre(categoria.getNombre());
+        Optional<Categoria> existe = categoriaRepository.findCategoriaByNombre(categoria.getNombre());
 
         datos = new HashMap<>();
 
-        if(res.isPresent()){
+        if(existe.isPresent()){
             datos.put("error", true);
             datos.put("message", "Ya existe una categoría con ese nombre");
             return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
@@ -92,16 +91,14 @@ public class CategoriaService {
             return new ResponseEntity<>(datos, HttpStatus.BAD_REQUEST);
         }
 
-        // Verificamos si la categoría está asociada a algún producto
         if (productoRepository.existsByCategoria(categoriaEliminada.get())) {
             datos.put("message", "Elimina primero el producto asociado");
-            return new ResponseEntity<>(datos, HttpStatus.BAD_REQUEST); // Devolver solo el mensaje
+            return new ResponseEntity<>(datos, HttpStatus.BAD_REQUEST);
         }
 
-        // Si no está asociada a ningún producto, eliminamos la categoría
         categoriaRepository.deleteById(id);
         datos.put("message", "Categoría eliminada con éxito");
-        return new ResponseEntity<>(datos, HttpStatus.ACCEPTED); // Mensaje exitoso
+        return new ResponseEntity<>(datos, HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/{idCategoria}")

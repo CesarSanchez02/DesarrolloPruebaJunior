@@ -37,7 +37,7 @@ export const ListaCategoria = () => {
                 obtenerCategorias();
             } catch (error: any) {
                 console.error("Error al eliminar la categoría", error);
-                // Verificamos si 'error.response' existe y si la respuesta contiene el mensaje esperado
+                
                 if (error.response && error.response.data && error.response.data.message) {
                     const errorMessage = error.response.data.message;
                     if (errorMessage === "Debes eliminar primero el producto") {
@@ -58,7 +58,6 @@ export const ListaCategoria = () => {
 
     return (
         <div className="container mt-4">
-            {/* Card principal */}
             <Card className="shadow-sm">
                 <CardHeader className="d-flex justify-content-between align-items-center">
                     <h4 className="mb-0 font-weight-bold">Lista de Categorías</h4>
@@ -80,7 +79,6 @@ export const ListaCategoria = () => {
                     </div>
                 </CardHeader>
                 <CardBody className="p-3">
-                    {/* Si no hay categorías */}
                     {categorias.length === 0 ? (
                         <p className="text-center">No hay categorías disponibles.</p>
                     ) : (

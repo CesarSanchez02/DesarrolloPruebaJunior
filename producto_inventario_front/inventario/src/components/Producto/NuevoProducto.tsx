@@ -31,7 +31,6 @@ export const NuevoProducto: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Validación de campos
         if (!nombre.trim()) {
             Swal.fire("Error", "El nombre del producto es obligatorio", "error");
             return;
@@ -67,7 +66,6 @@ export const NuevoProducto: React.FC = () => {
             return;
         }
 
-        // Creación del nuevo producto
         const nuevoProducto: IProducto = {
             nombre,
             precio: Number(precio),

@@ -74,7 +74,6 @@ export const ListaProducto = () => {
                     </div>
                 </CardHeader>
                 <CardBody className="p-3">
-                    {/* Si no hay productos */}
                     {productos.length === 0 ? (
                         <p className="text-center">No hay productos disponibles.</p>
                     ) : (

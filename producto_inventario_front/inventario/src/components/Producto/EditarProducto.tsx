@@ -37,7 +37,7 @@ export const EditarProducto = () => {
                 setPrecio(producto.precio.toString());
                 setStock(producto.stock.toString());
                 setCategoria(producto.categoria || null);
-                setOriginalNombre(producto.nombre);  // Asignar nombre original
+                setOriginalNombre(producto.nombre);
             } catch (error) {
                 console.error("Error al cargar producto", error);
                 Swal.fire("Error", "No se pudo cargar el producto", "error");
@@ -56,8 +56,7 @@ export const EditarProducto = () => {
             return;
         }
     
-        // Solo verificar el nombre si ha cambiado
-        if (nombre !== originalNombre) {  // Comparar con el nombre original del producto
+        if (nombre !== originalNombre) {  
             try {
                 const response = await axios.get<IProducto[]>(`${appsettings.apiUrl}/productos`);
                 const productoExistente = response.data.find((producto) => producto.nombre.toLowerCase() === nombre.toLowerCase());
